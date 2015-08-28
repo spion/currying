@@ -1,18 +1,11 @@
 var assert = require('assert');
 
-function s(a) {
-  return [].slice.call(a)
-}
-function plus(a, b) {
-  return a + b
+function add() {
+  // TODO
 }
 
-function add() {
-  var args = s(arguments)
-  function f() { return add.apply(null, args.concat(s(arguments))) }
-  f.valueOf = function() { return args.reduce(plus, 0) }
-  return f;
-}
+// Spoiler alert; add.js contains the solution.
+var add = require('./add')
 
 function test(a, b) {
   if (a == b) {
@@ -21,8 +14,6 @@ function test(a, b) {
     console.log(a + ' != ' + b);
   }
 }
-
-module.exports = add;
 
 test(add(1, 2), 3);
 test(add(3)(4)(), 7);
